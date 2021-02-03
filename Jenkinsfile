@@ -9,12 +9,6 @@ pipeline {
                     sh './gradlew assemble'
                 }
             }
-            
-            post {
-                success {
-                    archiveArtifacts 'build/libs/*.jar'
-                }
-            }
         }
 
 
