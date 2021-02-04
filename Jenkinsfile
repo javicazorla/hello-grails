@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    
+    agent any {
+        node  { configFileProvider(
+            [configFile(fileId: 'hello-grails-gradle.properties')])
+        }
+    }   
 
     stages {
         stage('Build') {
@@ -17,7 +22,7 @@ pipeline {
             steps { 
                 withGradle {
                     sh './gradlew clean test'
-                    sh './gradlew -Dgeb.env=firefoxHeadless iT'
+                    sh './gradlew iT'
                     sh './gradlew codenarcTest'
                 }
             }
