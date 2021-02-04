@@ -20,6 +20,7 @@ pipeline {
                 configFileProvider([configFile(fileId: 'hello-grails-gradle.properties' targetLocation: 'gradle.properties')]) {
                     sh './gradlew clean test'
                     sh './gradlew iT
+                    sh './gradlew codenarcTest'
                 }
                /*
                 withGradle {
@@ -32,7 +33,7 @@ pipeline {
             post {
                 always {
                     junit 'build/test-results/test/TEST-*.xml'
-                    /*echo 'Publish Codenarc report'
+                    echo 'Publish Codenarc report'
                     publishHTML (
                         target: [
                             allowMissing           : false,
@@ -42,7 +43,7 @@ pipeline {
                             reportFiles            : '*.html',
                             reportName             : "Codenarc Report"
                         ]
-                   )*/
+                   )
                 }
             }
         }
