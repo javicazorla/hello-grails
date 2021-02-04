@@ -1,8 +1,6 @@
 pipeline {
     
-    node {
-        configFileProvider([configFile(fileId: 'hello-grails-gradle.properties')])
-    }
+    agent any
      
     stages {
         stage('Build') {
@@ -16,6 +14,10 @@ pipeline {
 
 
         stage('Test') {
+            
+            steps {
+                configFileProvider([configFile(fileId: 'hello-grails-gradle.properties')])
+            }
 
             steps { 
                 withGradle {
