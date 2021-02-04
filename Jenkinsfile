@@ -16,9 +16,9 @@ pipeline {
         stage('Test') {
             
             steps {
-                
+                /*
                 configFileProvider([configFile(fileId: 'hello-grails-gradle.properties')])
-                
+                */
                 withGradle {
                     sh './gradlew clean test'
                     sh './gradlew iT'
