@@ -16,14 +16,18 @@ pipeline {
         stage('Test') {
             
             steps {
-                /*
-                configFileProvider([configFile(fileId: 'hello-grails-gradle.properties')])
-                */
-                withGradle {
+                
+                configFileProvider([configFile(fileId: 'hello-grails-gradle.properties')]) {
                     sh './gradlew clean test'
                     sh './gradlew iT'
                     sh './gradlew codenarcTest'
                 }
+               /*
+                withGradle {
+                    sh './gradlew clean test'
+                    sh './gradlew iT'
+                    sh './gradlew codenarcTest'
+                } */
             }
 
             post {
