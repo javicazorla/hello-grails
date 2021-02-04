@@ -19,7 +19,7 @@ pipeline {
                 
                 configFileProvider([configFile(fileId: 'hello-grails-gradle.properties' targetLocation: 'gradle.properties')]) {
                     sh './gradlew clean test'
-                    sh './gradlew iT
+                    sh './gradlew iT'
                     sh './gradlew codenarcTest'
                 }
                /*
